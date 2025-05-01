@@ -6,7 +6,7 @@ const Login = () => {
   const [isHovered, setIsHovered] = useState(false); // State for hover effect
 
   const handleGoogleLogin = () => {
-    window.location.href = "https://skillbridge-w8ku.onrender.com/auth/google";
+    window.location.href= "https://skillbridge-w8ku.onrender.com/auth/google";
   };
 
   const containerStyle = {
