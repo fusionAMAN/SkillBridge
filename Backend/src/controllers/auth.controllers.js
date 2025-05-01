@@ -29,7 +29,7 @@ export const googleAuthHandler = passport.authenticate("google", {
 });
 
 export const googleAuthCallback = passport.authenticate("google", {
-  failureRedirect: "http://localhost:5174/login",
+  failureRedirect: "http://localhost:5173/login",
   session: false,
 });
 
@@ -43,7 +43,7 @@ export const handleGoogleLoginCallback = asyncHandler(async (req, res) => {
     const jwtToken = generateJWTToken_username(existingUser);
     const expiryDate = new Date(Date.now() + 1 * 60 * 60 * 1000);
     res.cookie("accessToken", jwtToken, { httpOnly: true, expires: expiryDate, secure: false });
-    return res.redirect(`http://localhost:5174/discover`);
+    return res.redirect(`http://localhost:5173/discover`);
   }
 
   let unregisteredUser = await UnRegisteredUser.findOne({ email: req.user._json.email });
@@ -58,7 +58,7 @@ export const handleGoogleLoginCallback = asyncHandler(async (req, res) => {
   const jwtToken = generateJWTToken_email(unregisteredUser);
   const expiryDate = new Date(Date.now() + 0.5 * 60 * 60 * 1000);
   res.cookie("accessTokenRegistration", jwtToken, { httpOnly: true, expires: expiryDate, secure: false });
-  return res.redirect("http://localhost:5174/register");
+  return res.redirect("http://localhost:5173/register");
 });
 
 export const handleLogout = (req, res) => {
