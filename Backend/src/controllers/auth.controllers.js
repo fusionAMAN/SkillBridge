@@ -15,8 +15,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://skillbridge-w8ku.onrender.com/auth/google/callback"
-
+      callbackURL: "https://skillbridge-w8ku.onrender.com/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       done(null, profile);
@@ -42,7 +41,7 @@ export const handleGoogleLoginCallback = asyncHandler(async (req, res) => {
   if (existingUser) {
     const jwtToken = generateJWTToken_username(existingUser);
     const expiryDate = new Date(Date.now() + 1 * 60 * 60 * 1000);
-    res.cookie("accessToken", jwtToken, { httpOnly: true, expires: expiryDate, secure: false });
+    res.cookie("accessToken", jwtToken, { httpOnly: true, expires: expiryDate, secure: false , sameSite:"Lax"});
     return res.redirect(`http://localhost:5173/discover`);
   }
 
@@ -57,7 +56,7 @@ export const handleGoogleLoginCallback = asyncHandler(async (req, res) => {
   }
   const jwtToken = generateJWTToken_email(unregisteredUser);
   const expiryDate = new Date(Date.now() + 0.5 * 60 * 60 * 1000);
-  res.cookie("accessTokenRegistration", jwtToken, { httpOnly: true, expires: expiryDate, secure: false });
+  res.cookie("accessTokenRegistration", jwtToken, { httpOnly: true, expires: expiryDate, sameSite:"Lax" });
   return res.redirect("http://localhost:5173/register");
 });
 
