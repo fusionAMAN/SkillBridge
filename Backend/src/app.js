@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://delicate-mochi-3c8476.netlify.app",
+    origin: "https://symphonious-banoffee-acfddb.netlify.app",
     credentials: true,
   })
 );
