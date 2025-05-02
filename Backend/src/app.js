@@ -18,7 +18,7 @@ app.use(express.static("public")); // to use static public folder
 app.use(cookieParser()); // to enable CRUD operation on browser cookies
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://delicate-mochi-3c8476.netlify.app");
+  res.setHeader("Access-Control-Allow-Origin", "https://symphonious-banoffee-acfddb.netlify.app");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   // Add other CORS headers as needed
   next();

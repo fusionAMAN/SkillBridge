@@ -16,7 +16,7 @@ connectDB()
     const io = new Server(server, {
       pingTimeout: 60000,
       cors: {
-        origin: "https://delicate-mochi-3c8476.netlify.app",
+        origin: "https://symphonious-banoffee-acfddb.netlify.app",
         credentials: true,
       },
     });
