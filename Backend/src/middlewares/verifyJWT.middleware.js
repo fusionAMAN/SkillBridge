@@ -10,7 +10,7 @@ const verifyJWT_email = asyncHandler(async (req, res, next) => {
   try {
     console.log("\n******** Inside verifyJWT_email Function ********");
 
-    const token = req.cookies?.accessTokenRegistration || req.header("Authorization")?.replace("Bearer ", "");
+    const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
     if (!token) {
       console.log("token not found");
       throw new ApiError(401, "Please Login");
