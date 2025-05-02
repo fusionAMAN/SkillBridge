@@ -73,7 +73,7 @@ const Chats = () => {
     try {
       setChatLoading(true);
       const tempUser = JSON.parse(localStorage.getItem("userInfo"));
-      const { data } = await axios.get("http://localhost:8000/chat");
+      const { data } = await axios.get("https://skillbridge-w8ku.onrender.com/chat");
       // console.log("Chats", data.data);
       toast.success(data.message);
       if (tempUser?._id) {
@@ -95,7 +95,7 @@ const Chats = () => {
         if (err.response.data.message === "Please Login") {
           localStorage.removeItem("userInfo");
           setUser(null);
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           navigate("/login");
         }
       } else {
@@ -113,7 +113,7 @@ const Chats = () => {
   const handleChatClick = async (chatId) => {
     try {
       setChatMessageLoading(true);
-      const { data } = await axios.get(`http://localhost:8000/message/getMessages/${chatId}`);
+      const { data } = await axios.get(`https://skillbridge-w8ku.onrender.com/message/getMessages/${chatId}`);
       setChatMessages(data.data);
       // console.log("Chat Messages:", data.data);
       setMessage("");
@@ -131,7 +131,7 @@ const Chats = () => {
         if (err.response.data.message === "Please Login") {
           localStorage.removeItem("userInfo");
           setUser(null);
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           navigate("/login");
         }
       } else {
@@ -149,7 +149,7 @@ const Chats = () => {
         toast.error("Message is empty");
         return;
       }
-      const { data } = await axios.post("/message/sendMessage", { chatId: selectedChat.id, content: message });
+      const { data } = await axios.post("https://skillbridge-w8ku.onrender.com/message/sendMessage", { chatId: selectedChat.id, content: message });
       // console.log("after sending message", data);
       socket.emit("new message", data.data);
       setChatMessages((prevState) => [...prevState, data.data]);
@@ -161,7 +161,7 @@ const Chats = () => {
       if (err?.response?.data?.message) {
         toast.error(err.response.data.message);
         if (err.response.data.message === "Please Login") {
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           setUser(null);
           localStorage.removeItem("userInfo");
           navigate("/login");
@@ -175,7 +175,7 @@ const Chats = () => {
   const getRequests = async () => {
     try {
       setRequestLoading(true);
-      const { data } = await axios.get("/request/getRequests");
+      const { data } = await axios.get("https://skillbridge-w8ku.onrender.com/request/getRequests");
       setRequests(data.data);
       console.log(data.data);
       toast.success(data.message);
@@ -184,7 +184,7 @@ const Chats = () => {
       if (err?.response?.data?.message) {
         toast.error(err.response.data.message);
         if (err.response.data.message === "Please Login") {
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           setUser(null);
           localStorage.removeItem("userInfo");
           navigate("/login");
@@ -219,7 +219,7 @@ const Chats = () => {
 
     try {
       setAcceptRequestLoading(true);
-      const { data } = await axios.post("/request/acceptRequest", { requestId: selectedRequest._id });
+      const { data } = await axios.post("https://skillbridge-w8ku.onrender.com/request/acceptRequest", { requestId: selectedRequest._id });
       console.log(data);
       toast.success(data.message);
       // remove this request from the requests list
@@ -229,7 +229,7 @@ const Chats = () => {
       if (err?.response?.data?.message) {
         toast.error(err.response.data.message);
         if (err.response.data.message === "Please Login") {
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           setUser(null);
           localStorage.removeItem("userInfo");
           navigate("/login");
@@ -247,7 +247,7 @@ const Chats = () => {
     console.log("Request rejected");
     try {
       setAcceptRequestLoading(true);
-      const { data } = axios.post("/request/rejectRequest", { requestId: selectedRequest._id });
+      const { data } = axios.post("https://skillbridge-w8ku.onrender.com/request/rejectRequest", { requestId: selectedRequest._id });
       console.log(data);
       toast.success(data.message);
       setRequests((prevState) => prevState.filter((request) => request._id !== selectedRequest._id));
@@ -256,7 +256,7 @@ const Chats = () => {
       if (err?.response?.data?.message) {
         toast.error(err.response.data.message);
         if (err.response.data.message === "Please Login") {
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           setUser(null);
           localStorage.removeItem("userInfo");
           navigate("/login");
@@ -602,7 +602,7 @@ const Chats = () => {
 
                   scheduleForm.username = selectedChat.username;
                   try {
-                    const { data } = await axios.post("/user/sendScheduleMeet", scheduleForm);
+                    const { data } = await axios.post("https://skillbridge-w8ku.onrender.com/user/sendScheduleMeet", scheduleForm);
                     toast.success("Request mail has been sent successfully!");
                     setScheduleForm({
                       date: "",
@@ -615,7 +615,7 @@ const Chats = () => {
                       if (error.response.data.message === "Please Login") {
                         localStorage.removeItem("userInfo");
                         setUser(null);
-                        await axios.get("/auth/logout");
+                        await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
                         navigate("/login");
                       }
                     } else {

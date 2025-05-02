@@ -32,7 +32,7 @@ const Rating = () => {
     // Assuming you have a backend API endpoint to handle the form data
     try {
       setLoading(true);
-      const { data } = await axios.post(`/rating/rateUser`, {
+      const { data } = await axios.post(`https://skillbridge-w8ku.onrender.com/rating/rateUser`, {
         rating: rating,
         description: review,
         username: user.username,
@@ -48,7 +48,7 @@ const Rating = () => {
         if (error.response.data.message === "Please Login") {
           localStorage.removeItem("userInfo");
           setUser(null);
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           navigate("/login");
         }
       }

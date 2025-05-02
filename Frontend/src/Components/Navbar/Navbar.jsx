@@ -19,7 +19,7 @@ const UserProfileDropdown = () => {
     localStorage.removeItem("userInfo");
     setUser(null);
     try {
-      const response = await axios.get("/auth/logout");
+      const response = await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
       window.location.href = "http://localhost:5173/login";
     } catch (error) {
       console.log(error);

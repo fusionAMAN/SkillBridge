@@ -16,7 +16,7 @@ connectDB()
     const io = new Server(server, {
       pingTimeout: 60000,
       cors: {
-        origin: "https://symphonious-banoffee-acfddb.netlify.app",
+        origin: "http://localhost:5173",
         credentials: true,
       },
     });

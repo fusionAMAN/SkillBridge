@@ -327,7 +327,7 @@ const Register = () => {
     if (check) {
       setSaveLoading(true);
       try {
-        const { data } = await axios.post("/user/unregistered/saveRegDetails", form);
+        const { data } = await axios.post("https://skillbridge-w8ku.onrender.com/user/unregistered/saveRegDetails", form);
         toast.success("Details saved successfully");
       } catch (error) {
         console.log(error);
@@ -347,7 +347,7 @@ const Register = () => {
     if (check1 && check2) {
       setSaveLoading(true);
       try {
-        const { data } = await axios.post("/user/unregistered/saveEduDetail", form);
+        const { data } = await axios.post("https://skillbridge-w8ku.onrender.com/user/unregistered/saveEduDetail", form);
         toast.success("Details saved successfully");
       } catch (error) {
         console.log(error);
@@ -369,7 +369,7 @@ const Register = () => {
     if (check1 && check2 && check3) {
       setSaveLoading(true);
       try {
-        const { data } = await axios.post("/user/unregistered/saveAddDetail", form);
+        const { data } = await axios.post("https://skillbridge-w8ku.onrender.com/user/unregistered/saveAddDetail", form);
         toast.success("Details saved successfully");
       } catch (error) {
         console.log(error);
@@ -391,7 +391,7 @@ const Register = () => {
     if (check1 && check2 && check3) {
       setSaveLoading(true);
       try {
-        const { data } = await axios.post("/user/registerUser", form);
+        const { data } = await axios.post("https://skillbridge-w8ku.onrender.com/user/registerUser", form);
         toast.success("Registration Successful");
         console.log("Data: ", data.data);
         navigate("/discover");

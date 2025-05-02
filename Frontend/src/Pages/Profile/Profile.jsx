@@ -21,7 +21,7 @@ const Profile = () => {
     const getUser = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get(`/user/registered/getDetails/${username}`);
+        const { data } = await axios.get(`https://skillbridge-w8ku.onrender.com/user/registered/getDetails/${username}`);
         console.log(data.data);
         setProfileUser(data.data);
       } catch (error) {
@@ -31,7 +31,7 @@ const Profile = () => {
           if (error.response.data.message === "Please Login") {
             localStorage.removeItem("userInfo");
             setUser(null);
-            await axios.get("/auth/logout");
+            await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
             navigate("/login");
           }
         }
@@ -52,7 +52,7 @@ const Profile = () => {
     console.log("Connect");
     try {
       setConnectLoading(true);
-      const { data } = await axios.post(`/request/create`, {
+      const { data } = await axios.post(`https://skillbridge-w8ku.onrender.com/request/create`, {
         receiverID: profileUser._id,
       });
 
@@ -71,7 +71,7 @@ const Profile = () => {
         if (error.response.data.message === "Please Login") {
           localStorage.removeItem("userInfo");
           setUser(null);
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           navigate("/login");
         }
       }

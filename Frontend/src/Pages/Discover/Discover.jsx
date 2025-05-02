@@ -35,7 +35,7 @@ const Discover = () => {
     const getUser = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/user/registered/getDetails`, { withCredentials: true });
+        const { data } = await axios.get(`https://skillbridge-w8ku.onrender.com/user/registered/getDetails`, { withCredentials: true });
         console.log(data.data);
         setUser(data.data);
         localStorage.setItem("userInfo", JSON.stringify(data.data));
@@ -46,13 +46,13 @@ const Discover = () => {
         }
         localStorage.removeItem("userInfo");
         setUser(null);
-        await axios.get("/auth/logout");
+        await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
         navigate("/login");
       }
     };
     const getDiscoverUsers = async () => {
       try {
-        const { data } = await axios.get("/user/discover", { withCredentials: true });
+        const { data } = await axios.get("https://skillbridge-w8ku.onrender.com/user/discover", { withCredentials: true });
         console.log(data);
         setDiscoverUsers(data.data.forYou);
         setWebDevUsers(data.data.webDev);
@@ -65,7 +65,7 @@ const Discover = () => {
         }
         localStorage.removeItem("userInfo");
         setUser(null);
-        await axios.get("/auth/logout");
+        await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
         navigate("/login");
       } finally {
         setLoading(false);

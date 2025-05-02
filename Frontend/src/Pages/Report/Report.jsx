@@ -33,7 +33,7 @@ const ReportForm = () => {
     // console.log("formData:", formData);
     try {
       setLoading(true);
-      const { data } = await axios.post(`/report/create`, formData);
+      const { data } = await axios.post(`https://skillbridge-w8ku.onrender.com/report/create`, formData);
       toast.success(data.message);
       setFormData((prevState) => {
         return {
@@ -49,7 +49,7 @@ const ReportForm = () => {
         if (error.response.data.message === "Please Login") {
           localStorage.removeItem("userInfo");
           setUser(null);
-          await axios.get("/auth/logout");
+          await axios.get("https://skillbridge-w8ku.onrender.com/auth/logout");
           navigate("/login");
         }
       }
